@@ -1,25 +1,55 @@
 #include "metropolis.h"
+#include "observable.h"
+#define size 20
+#define Ncf 1000
 
-int main(int argc, char *argv[]) {
+int main(void) {
 
-  if(argc != 4) {
-    printf("This executable needs 3 arguments (size of grid, left, right)!");
-    return 1;
+  const double a = 1./2;
+  const double Ncor = 20;
+  const double eps = 1.4;
+  static double x[size];
+  static double G[Ncf][size];
+
+  for(unsigned int i = 0; i < size; ++i) {
+    x[i] = 0.;
+  }
+  for(unsigned int i = 0; i < 5*Ncor; ++i) {
+    updateMetropolisHarmonic(x, size, eps, a);
   }
 
-  double left;
-  sscanf (argv[2],"%f",&left);
-  double right;
-  sscanf (argv[3],"%f",&right);
-  unsigned int size_of_array;
-  sscanf (argv[1],"%d",&size_of_array);
-  double array[size_of_array];
-  array[0] = left;
-  array[size_of_array - 1] = right;
+  for(unsigned int it = 0; it < Ncf; ++it) {
+    for(unsigned int i = 0; i < Ncor; ++i) {
+      updateMetropolisHarmonic(x, size, eps, a);
+    }
+    for(unsigned int j = 0; j < size; ++j) {
+      G[it][j] = computeGx1(x, size, j);
+    }
+  }
+  double old_g = 0.;
+  double avg_g = 0.;
+  for(unsigned int i = 0; i < size; ++i) {
+    old_g = avg_g;
+    avg_g = 0;
+    for(unsigned int it = 0; it < Ncf; ++it) {
+      avg_g += G[it][i];
+    }
+    avg_g = avg_g / Ncf;
+    printf("G(%d) = %f \n", i, avg_g);
+    printf("Delta E(%d) = %f \n", i, log(0.000000001 + old_g/avg_g)/a);
+  }
 
-
-//  for ( unsigned int i = 0; i < size_of_array; ++i ) {
-//       printf( "*(arr + %d) : %f\n", i, *(array + i));
+//  for(unsigned int i = 0; i < size_of_array; ++i) {
+//    printf("x[%d]: %f \n", i, x[i]);
 //  }
+
+//  updateMetropolis(x, size_of_array, eps, a);
+
+//  for(unsigned int i = 0; i < size_of_array; ++i) {
+//    printf("x[%d]: %f \n", i, x[i]);
+//  }
+
+
+
   return 0;
 }
