@@ -19,6 +19,23 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../Makefile" />
+		<Unit filename="../include/error.h" />
+		<Unit filename="../include/metropolis.h" />
+		<Unit filename="../include/observable.h" />
+		<Unit filename="../src/error.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/metropolis.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/observable.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/run.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="error.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

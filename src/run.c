@@ -16,7 +16,7 @@ int main(void) {
 
   // generate ensembles + calculate operator values
   // for these ensembles
-  calculateGx1(x, G, size, Ncf, Ncor, eps, a);
+  calculateGx3(x, G, size, Ncf, Ncor, eps, a);
   // average them out and calculate the first excitation level
   // by using log(G[j]/G[j+1])
   double old_g = 0.;
