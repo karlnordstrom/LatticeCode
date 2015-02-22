@@ -18,6 +18,5 @@ void updateMetropolisHarmonic(double array[], const unsigned int size, const dou
 double harmonicAction(const unsigned int j, const double array[], const unsigned int size, const double a) {
   unsigned int jp1 = (j + 1) % size;
   unsigned int jm1 = (j - 1) % size;
-  return a * array[j] * array[j] / 2. + array[j] * (array[j] - array[jp1] - array[jm1])/a;
-//  return a * array[j] * array[j] / 2. + (array[jp1] - array[j]) * (array[jp1] - array[j])/ (2*a);
+  return a * array[j] * array[j]/2. + array[j] * (array[j] - array[jp1] - array[jm1])/a;
 }
