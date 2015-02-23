@@ -15,7 +15,7 @@
 */
 
 // Generate random number uniformly distributed between
-// a and b (used the default C RNG which is pretty horrendous)
+// a and b using a 64 bit Mersenne Twister
 double uniform(const double a, const double b);
 
 // Update the path stored in array[] using an action
