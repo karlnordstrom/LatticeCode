@@ -1,0 +1,5 @@
+This is an implementation of the path integral formalism for calculating the first excited state of the quantum harmonic oscillator.
+
+The action can be calculated using a first or second order finite difference approximation and errors are estimated using the standard lattice bootstrap method and are presented as "+/- one standard deviation."
+
+It makes use of Makoto Matsumoto's 64 bit implementation of the Mersenne Twister for generating random numbers (http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt64.html).

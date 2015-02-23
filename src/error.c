@@ -32,4 +32,3 @@ void rebinArray(const double G[], double newG[], const unsigned int size, const 
     }
   }
 }
-

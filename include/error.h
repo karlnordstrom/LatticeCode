@@ -1,3 +1,6 @@
+#ifndef ERROR_H
+#define ERROR_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -17,3 +20,4 @@ double bootstrapError(const double G[], const unsigned int Ncf, const unsigned i
 // large a role correlations between paths plays in the error)
 void rebinArray(const double G[], double newG[], const unsigned int size, const unsigned int Ncf, const unsigned int bins);
 
+#endif
