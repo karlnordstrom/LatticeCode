@@ -24,6 +24,7 @@
 		<Unit filename="../include/error.h" />
 		<Unit filename="../include/metropolis.h" />
 		<Unit filename="../include/observable.h" />
+		<Unit filename="../plot.py" />
 		<Unit filename="../src/error.c">
 			<Option compilerVar="CC" />
 		</Unit>
