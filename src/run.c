@@ -3,8 +3,8 @@
 #include "error.h"
 #include "mt64.h"
 #include "time.h"
-#define size 20
-#define Ncf 10000
+#define size 100
+#define Ncf 1000
 #define rebin 5
 
 int main(void) {
@@ -12,8 +12,8 @@ int main(void) {
   const int seed = time(NULL);
   init_genrand64(seed);
 
-  const double a = 1./2;
-  const unsigned int Ncor = 20;
+  const double a = 1./10;
+  const unsigned int Ncor = 50;
   const double eps = 1.4;
   // allocate memory to avoid overflowing the stack
   double *x = (double *) malloc (sizeof (double) * size);
@@ -38,12 +38,13 @@ int main(void) {
     avg_g = avg_g / Ncf;
     // Calculate the standard deviation on G using
     // the standard bootstrap procedure
-    g_error = bootstrapError(G, Ncf, size, i, 1000);
+    g_error = bootstrapError(G, Ncf, size, i, 100);
 //    printf("G(%d) = %f +/- %f \n", i, avg_g, g_error);
     double delta_E = log(old_g/avg_g)/a;
     double E_error = (old_g/avg_g)*sqrt( (g_error/avg_g)*(g_error/avg_g) + (old_error/old_g)*(old_error/old_g) ) / delta_E;
     if (i != 0)
-      printf("Delta E(%d) = %f +/- %f \n", i, delta_E, E_error);
+//      printf("Delta E(%d) = %f +/- %f \n", i, delta_E, E_error);
+      printf("%d  %f  %f \n", i, delta_E, E_error);
   }
   // rebin the operator values and redo the calculation
   double *Gbinned = (double *) malloc (sizeof (double) * size * Ncf / rebin);

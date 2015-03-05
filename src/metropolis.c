@@ -30,7 +30,7 @@ void updateMetropolisHarmonicImproved(double array[], const unsigned int size, c
 double harmonicAction(const unsigned int j, const double array[], const unsigned int size, const double a) {
   const unsigned int jp1 = (size + j + 1) % size;
   const unsigned int jm1 = (size + j - 1) % size;
-  return a * array[j] * array[j]/2. + array[j] * (array[j] - array[jp1] - array[jm1])/a;
+  return a * 4 * array[j] * array[j]/2. + array[j] * (array[j] - array[jp1] - array[jm1])/a;
 }
 
 double harmonicActionImproved(const unsigned int j, const double array[], const unsigned int size, const double a) {
@@ -38,5 +38,5 @@ double harmonicActionImproved(const unsigned int j, const double array[], const 
   const unsigned int jp2 = (size + j + 2) % size;
   const unsigned int jm1 = (size + j - 1) % size;
   const unsigned int jm2 = (size + j - 2) % size;
-  return a * 1 * array[j] * array[j]/2. + array[j] * ( (1./12)*(array[jm2] + array[jp2]) - (8./6)*(array[jm1] + array[jp1]) + (5./4)*array[j] )/a;
+  return a * 4 * array[j] * array[j]/2. + array[j] * ( (1./12)*(array[jm2] + array[jp2]) - (8./6)*(array[jm1] + array[jp1]) + (5./4)*array[j] )/a;
 }

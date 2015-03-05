@@ -1,7 +1,7 @@
 INCDIR=include
 SRCDIR=src
 LIBDIR=lib
-CC=gcc -std=c99 -O3
+CC=gcc -std=c99 -Ofast -march=native
 
 all: run.exe
 
