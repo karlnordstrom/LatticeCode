@@ -4,7 +4,7 @@
 #include "mt64.h"
 #include "time.h"
 #define size 100
-#define Ncf 1000
+#define Ncf 10000
 #define rebin 5
 
 int main(void) {
