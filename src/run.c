@@ -7,6 +7,11 @@
 #define size 100
 #define Ncf 10000
 
+/*
+    Example of using the library to calculate the difference between
+    the ground state E_0 and the first excited state E_1 of the QHO.
+*/
+
 int main(void) {
 
   const int seed = time(NULL);
