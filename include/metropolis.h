@@ -20,9 +20,7 @@ double uniform(const double a, const double b);
 
 // Update the path stored in array[] using an action
 // corresponding to the QHO
-void updateMetropolisHarmonic(double array[], const unsigned int size, const double eps, const double a);
-// As above but using a higher order finite difference
-void updateMetropolisHarmonicImproved(double array[], const unsigned int size, const double eps, const double a);
+void updateMetropolisHarmonic(double array[], const unsigned int size, const double eps, const double a, double (*actionPtr)(const unsigned int j, const double array[], const unsigned int size, const double a));
 
 // Return the local action for the QHO
 double harmonicAction(const unsigned int j, const double array[], const unsigned int size, const double a);

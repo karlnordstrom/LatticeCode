@@ -5,23 +5,12 @@ double uniform(const double a, const double b) {
   return a + (b-a) * genrand64_real1();
 }
 
-void updateMetropolisHarmonic(double array[], const unsigned int size, const double eps, const double a) {
+void updateMetropolisHarmonic(double array[], const unsigned int size, const double eps, const double a, double (*actionPtr)(const unsigned int j, const double array[], const unsigned int size, const double a)) {
   for(unsigned int i = 0; i < size; ++i) {
     double oldx = array[i];
-    double oldS = harmonicAction(i, array, size, a);
+    double oldS = (*actionPtr)(i, array, size, a);
     array[i] = array[i] + uniform(-eps, eps);
-    double dS = harmonicAction(i, array, size, a) - oldS;
-    if(dS > 0 && exp(-dS) < uniform(0,1))
-      array[i] = oldx;
-  }
-}
-
-void updateMetropolisHarmonicImproved(double array[], const unsigned int size, const double eps, const double a) {
-  for(unsigned int i = 0; i < size; ++i) {
-    double oldx = array[i];
-    double oldS = harmonicActionImproved(i, array, size, a);
-    array[i] = array[i] + uniform(-eps, eps);
-    double dS = harmonicActionImproved(i, array, size, a) - oldS;
+    double dS = (*actionPtr)(i, array, size, a) - oldS;
     if(dS > 0 && exp(-dS) < uniform(0,1))
       array[i] = oldx;
   }
