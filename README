@@ -7,3 +7,5 @@ It makes use of Makoto Matsumoto's 64 bit implementation of the Mersenne Twister
 To implement a new action just add it to the metropolis.h/c files following the examples of the QHO with first and second order finite difference approximations. To add new operators do the same in operator.h/c following Gx1 and Gx3.
 
 This library is based on the outline given in (http://arxiv.org/abs/hep-lat/0506036).
+
+The latticereport pdf contains a short introduction to the underlying theory and presents some results obtained with this library.
