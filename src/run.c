@@ -1,11 +1,11 @@
 #include "metropolis.h"
 #include "operator.h"
+#include "action.h"
 #include "error.h"
 #include "mt64.h"
 #include "time.h"
 #define size 100
 #define Ncf 10000
-#define rebin 5
 
 int main(void) {
 
@@ -20,13 +20,17 @@ int main(void) {
   double *G = (double *) malloc (sizeof (double) * size * Ncf);
 
   // set up the action and operator we want to study
-  double (*actionPtr)(const unsigned int, const double*, const unsigned int, const double);
-  actionPtr = &harmonicActionImproved;
-  double (*operatorPtr)(const double*, const unsigned int, const unsigned int);
-  operatorPtr = &Gx1;
+  Action action;
+  action.action = &harmonicAction;
+  action.parameters = (double[]){ 1. }; // the only parameter this action takes is omega
+
+  Operator op;
+  op.op = &Gx1;
+  op.parameters = (double[]) {}; // no parameters
+
   // generate ensembles + calculate operator values
   // for these ensembles
-  calculateOperator(x, G, size, Ncf, Ncor, eps, a, actionPtr, operatorPtr);
+  calculateOperator(x, G, size, Ncf, Ncor, eps, a, action, op);
   // average them out and calculate the first excitation level
   // by using log(G[j]/G[j+1])
   double old_g = 0.;

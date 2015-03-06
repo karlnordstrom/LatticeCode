@@ -3,3 +3,7 @@ This is an implementation of the path integral formalism for calculating the fir
 The action can be calculated using a first or second order finite difference approximation and errors are estimated using the standard lattice bootstrap method and are presented as "+/- one standard deviation."
 
 It makes use of Makoto Matsumoto's 64 bit implementation of the Mersenne Twister for generating random numbers (http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt64.html).
+
+To implement a new action just add it to the metropolis.h/c files following the examples of the QHO with first and second order finite difference approximations. To add new operators do the same in operator.h/c following Gx1 and Gx3.
+
+This library is based on the outline given in (http://arxiv.org/abs/hep-lat/0506036).
