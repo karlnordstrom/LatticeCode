@@ -1,6 +1,6 @@
 This is a C library for performing calculations in one-dimensional quantum mechanics using the path integral formalism.
 
-Functions to perform calculations for the quantum harmonic oscillator using first and second order finite difference approximation and two simple source+sink operators are included and errors are estimated using the standard lattice bootstrap method and are presented as "+/- one standard deviation."
+Functions to perform calculations for the quantum harmonic oscillator using first and second order finite difference approximations and two simple source+sink operators are included and errors are estimated using the standard lattice bootstrap method and are presented as "+/- one standard deviation."
 
 To implement a new action just add it to the metropolis.h/c files following the examples of the QHO with first and second order finite difference approximations. To add new operators do the same in operator.h/c following Gx1 and Gx3.
 
