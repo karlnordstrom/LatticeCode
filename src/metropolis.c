@@ -5,7 +5,7 @@ double uniform(const double a, const double b) {
   return a + (b-a) * genrand64_real1();
 }
 
-void updateMetropolisHarmonic(double array[], const unsigned int size, const double eps, const double a, double (*actionPtr)(const unsigned int j, const double array[], const unsigned int size, const double a)) {
+void updateMetropolis(double array[], const unsigned int size, const double eps, const double a, double (*actionPtr)(const unsigned int, const double*, const unsigned int, const double)) {
   for(unsigned int i = 0; i < size; ++i) {
     double oldx = array[i];
     double oldS = (*actionPtr)(i, array, size, a);

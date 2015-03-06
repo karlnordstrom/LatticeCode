@@ -1,5 +1,5 @@
-#ifndef OBSERVABLE_H
-#define OBSERVABLE_H
+#ifndef OPERATOR_H
+#define OPERATOR_H
 
 #include "metropolis.h"
 
