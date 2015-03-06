@@ -1,6 +1,5 @@
 #include "operator.h"
 
-//void calculateOperator(double x[], double G[], const unsigned int size, const unsigned int Ncf, const unsigned int Ncor, const double eps, const double a, double (*actionPtr)(const unsigned int j, const double array[], const unsigned int size, const double a), double (*operatorPtr)(const double x[], const unsigned int size, const unsigned int n)) {
 void calculateOperator(double x[], double G[], const unsigned int size, const unsigned int Ncf, const unsigned int Ncor, const double eps, const double a, Action currentAction, Operator currentOperator) {
   // initialise so that x[j] = 0 for all j
   for(unsigned int i = 0; i < size; ++i) {
