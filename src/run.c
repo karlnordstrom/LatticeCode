@@ -19,9 +19,14 @@ int main(void) {
   double *x = (double *) malloc (sizeof (double) * size);
   double *G = (double *) malloc (sizeof (double) * size * Ncf);
 
+  // set up the action and operator we want to study
+  double (*actionPtr)(const unsigned int j, const double array[], const unsigned int n, const double a);
+  actionPtr = &harmonicActionImproved;
+  double (*operatorPtr)(const double x[], const unsigned int j, const unsigned int n);
+  operatorPtr = &Gx1;
   // generate ensembles + calculate operator values
   // for these ensembles
-  calculateGx1Improved(x, G, size, Ncf, Ncor, eps, a);
+  calculateOperator(x, G, size, Ncf, Ncor, eps, a, actionPtr, operatorPtr);
   // average them out and calculate the first excitation level
   // by using log(G[j]/G[j+1])
   double old_g = 0.;
