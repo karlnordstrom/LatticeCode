@@ -5,6 +5,8 @@
 #include "mt64.h"
 #include "operator.h"
 #include "action.h"
+#include <curand.h>
+#include <curand_kernel.h>
 
 /*
 
@@ -19,11 +21,11 @@
 double uniform(const double a, const double b);
 
 // Update the path stored in array[] using the provided action
-void updateMetropolis(double array[], const unsigned int size, const double eps, const double a, Action currentAction);
+__global__ void updateMetropolis(double array[], const unsigned int size, const double eps, const double a, const double omega);
 
 // Return the local action for the QHO
-double harmonicAction(const unsigned int j, const double array[], const unsigned int size, const double a, const double* parameters);
+__device__ double harmonicAction(const unsigned int j, const double array[], const unsigned int size, const double a, const double omega);
 // As above but using higher order finite difference
-double harmonicActionImproved(const unsigned int j, const double array[], const unsigned int size, const double a, const double* parameters);
+__device__ double harmonicActionImproved(const unsigned int j, const double array[], const unsigned int size, const double a, const double omega);
 
 #endif
