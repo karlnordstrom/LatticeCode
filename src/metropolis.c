@@ -4,15 +4,14 @@ double uniform(const double a, const double b) {
   return a + (b-a) * genrand64_real1();
 }
 
-void updateMetropolis(double array[], const unsigned int size, const double eps, const double a, Action currentAction) {
-  for(unsigned int i = 0; i < size; ++i) {
-    double oldx = array[i];
-    double oldS = (*currentAction.action)(i, array, size, a, currentAction.parameters);
-    array[i] = array[i] + uniform(-eps, eps);
-    double dS = (*currentAction.action)(i, array, size, a, currentAction.parameters) - oldS;
-    if(dS > 0 && exp(-dS) < uniform(0,1))
-      array[i] = oldx;
-  }
+__global__ void updateMetropolis(double array[], const unsigned int size, const double eps, const double a) {
+  int idx = threadIdx.x + (blockIdx.x * blockDim.x);
+  double oldx = array[i];
+  double oldS = (*currentAction.action)(i, array, size, a, currentAction.parameters);
+  array[i] = array[i] + uniform(-eps, eps);
+  double dS = harmonicActionImproved(i, array, size, a, currentAction.parameters) - oldS;
+  if(dS > 0 && exp(-dS) < uniform(0,1))
+    array[i] = oldx;
 }
 
 double harmonicAction(const unsigned int j, const double array[], const unsigned int size, const double a, const double *parameters) {
